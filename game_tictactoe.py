@@ -137,6 +137,14 @@ def win():
         print("\n")
         reset()
         start_play()
+     elif (row1[0] == 'X' and row2[0] == 'X' and row3[0] == 'X') or (row1[1] == 'X' and row2[1] == 'X' and row3[1] == 'X') or (row1[2] == 'X' and row2[2] == 'X' and row3[2] == 'X'):
+        print('\n')
+        print("Congratulations!!!! X is the Winner")
+        print("\n")
+        print("Lets Play again! ")
+        print("\n")
+        reset()
+        start_play()
     else:
         reset()
         asking_input()
