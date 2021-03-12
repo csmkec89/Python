@@ -1,12 +1,8 @@
-#!/usr/bin/env python
-# coding: utf-8
+#! /usr/bin/env python
 
-# In[200]:
-
-
-row1 = [' ', ' ', ' ']
-row2 = [' ', ' ', ' ']
-row3 = [' ', ' ', ' ']
+#row1 = [' ', ' ', ' ']
+#row2 = [' ', ' ', ' ']
+#row3 = [' ', ' ', ' ']
 
 ####################### play variables stored in Dictionary, for better tracking ########################################################################
 
@@ -26,12 +22,14 @@ def start_play():
     
     while d['start'] not in ['Y', 'y','N', 'n' ]:
         
+        
         p = input("Please strike 'y' for starting and 'n' for quitting the Game!!! ")
         d['start'] = p
         if d['start'] in ['Y', 'y']:
             print('\n')
             print("Let's get started!!!!")
             print('\n')
+            resets()
             reset_display()
             asking_input()
         elif d['start'] in ['N', 'n']:
@@ -50,15 +48,20 @@ def asking_input():
             d['value'] = z.upper()
 
         while d['position'] not in range(1,10):
-            t = input("Please input the position, select from 1-9: ")
-            d['position'] = int(t)
+                
+                t = input("Please input the position, select from 1-9: ")
+                
+                if t.isalpha():
+                    break
+                else:
+                    d['position'] = int(t)
         
         mapping_inputs()
 ###############################################################################################################################
 
 ################ Below function resets the value and position for TicTacToe ##############################################
 
-def reset():
+def resets():
     d['value'] = 0
     d['position'] = 0
 ############################################################################################################################    
@@ -91,10 +94,12 @@ def mapping_inputs():
         if row2[d['position']-4] == ' ':
             row2[d['position']-4] = d['value']
             display()
-    else:
+    elif d['position'] in [7,8,9]:
         if row3[d['position']-7] == ' ':
             row3[d['position']-7] = d['value']
             display()
+    else:
+        asking_input()
     
     win()
 ############################################################################################################################    
@@ -108,6 +113,7 @@ def win():
         print("\n")
         print("Lets Play again! ")
         print("\n")
+        #resets()
         start_play()
         
     elif row1 == ['O','O','O'] or row2 == ['O','O','O'] or row3 == ['O','O','O']:
@@ -116,6 +122,7 @@ def win():
         print("\n")
         print("Lets Play again! ")
         print("\n")
+        #resets()
         start_play()
     
     elif (row1[0] == 'O' and row2[0] == 'O' and row3[0] == 'O') or (row1[1] == 'O' and row2[1] == 'O' and row3[1] == 'O') or (row1[2] == 'O' and row2[2] == 'O' and row3[2] == 'O'):
@@ -124,6 +131,7 @@ def win():
         print("\n")
         print("Lets Play again! ")
         print("\n")
+        #resets()
         start_play()
     
     elif (row1[0] == 'X' and row2[0] == 'X' and row3[0] == 'X') or (row1[1] == 'X' and row2[1] == 'X' and row3[1] == 'X') or (row1[2] == 'X' and row2[2] == 'X' and row3[2] == 'X'):
@@ -132,28 +140,22 @@ def win():
         print("\n")
         print("Lets Play again! ")
         print("\n")
+        #resets()
         start_play()
     elif (' ' not in row1) and (' ' not in row2) and (' ' not in row3):
+        
         print('\n')
         print('Sorry its a Tie between you two')
         print("\n")
         print("Lets Play again! ")
         print("\n")
+        #resets()
         start_play()
-    else:
-        reset()
-        asking_input()
-
         
-
-
-
-
-
-start_play()
-
-
-
+    else:
+        resets()
+        asking_input()
+        
 
 
 
