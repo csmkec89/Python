@@ -1,3 +1,9 @@
+from random import shuffle
+
+#row1 = [' ', ' ', ' ']
+#row2 = [' ', ' ', ' ']
+#row3 = [' ', ' ', ' ']
+
 ####################### play variables stored in Dictionary, for better tracking ########################################################################
 
 d = {'value': 0, 'position': 0, 'start': 0}
@@ -15,6 +21,48 @@ def display():
 
 ######################## Below function kickstarts the game, taking inputs from user [yY] for yes [nN] for No################
 
+######################## Below function will decide who will go first to play TicTacToe #####################################
+
+def whowill():
+    print("Lets see who will go first to play TicTacToe Board game")
+    myval = 0
+    mylist = []
+    A = ''
+    B = ''
+    while A not in ['X','x','O','o']:
+        
+        A = input("Hi, Player 1 , pls. select the value either 'X' or 'O' \n")
+        print('\n')
+    while B not in ['X','x','O','o']:
+        B = input("Hi, Player 2 , pls. select the value either 'X' or 'O' \n")
+        print('\n')
+        
+    while B == A:
+        
+                
+        print("Sorry Player 2 you can't select the same ID as Player 1")
+        print('\n')
+        B = input("Hi Player 2 , pls. select the value either 'X' or 'O' \n")
+        print('\n')
+            
+    mylist.append(A)
+    mylist.append(B)
+        
+    a = A.upper()
+    b = B.upper()
+        
+    shuffle(mylist)
+        
+    if mylist[0] == A:
+            print(f"Player 1 with ID '{a}' will Play first")
+            print('\n')
+            
+    else: 
+            print(f"Player 2 with ID '{b}' will Play first")
+            print('\n')
+
+#############################################################################################################################
+
 def start_play():
     d['start'] = 0
     
@@ -27,6 +75,7 @@ def start_play():
             print('\n')
             print("Let's get started!!!!")
             print('\n')
+            whowill()
             resets()
             reset_display()
             asking_input()
@@ -42,13 +91,13 @@ def asking_input():
         
         while d['value'] not in ['O', 'x', 'o', 'X']:
             
-            z = input("Please input the value, either o or x: ")
+            z = input("Please input the value, either o or x: \n")
             d['value'] = z.upper()
             print('\n')
 
         while d['position'] not in range(1,10):
                 
-                t = input("Please input the position, select from 1-9: ")
+                t = input("Please input the position, select from 1-9: \n")
                 
                 if t.isalpha():
                     break
@@ -162,5 +211,3 @@ def win():
         resets()
         asking_input()
         
-
-
