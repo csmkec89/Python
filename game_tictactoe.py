@@ -1,9 +1,3 @@
-#! /usr/bin/env python
-
-#row1 = [' ', ' ', ' ']
-#row2 = [' ', ' ', ' ']
-#row3 = [' ', ' ', ' ']
-
 ####################### play variables stored in Dictionary, for better tracking ########################################################################
 
 d = {'value': 0, 'position': 0, 'start': 0}
@@ -11,9 +5,13 @@ d = {'value': 0, 'position': 0, 'start': 0}
 #################### display Function ###########################################
 
 def display():
-    print(row1)
-    print(row2)
-    print(row3)
+    print(f"{row1[0]} |{row1[1]}| {row1[2]}")
+    print("-------")
+   
+    print(f"{row2[0]} |{row2[1]}| {row2[2]}")
+    print("-------")
+   
+    print(f"{row3[0]} |{row3[1]}| {row3[2]}")
 
 ######################## Below function kickstarts the game, taking inputs from user [yY] for yes [nN] for No################
 
@@ -46,6 +44,7 @@ def asking_input():
             
             z = input("Please input the value, either o or x: ")
             d['value'] = z.upper()
+            print('\n')
 
         while d['position'] not in range(1,10):
                 
@@ -75,9 +74,13 @@ def reset_display():
     row1 = [' ', ' ', ' ']
     row2 = [' ', ' ', ' ']
     row3 = [' ', ' ', ' ']
-    print(row1)
-    print(row2)
-    print(row3)
+    print(f"{row1[0]} |{row1[1]}| {row1[2]}")
+    print("-------")
+   
+    print(f"{row2[0]} |{row2[1]}| {row2[2]}")
+    print("-------")
+   
+    print(f"{row3[0]} |{row3[1]}| {row3[2]}")
 ##############################################################################################################################    
         
 ####################################### Below one maps input in the TicTacToe matrix #####################################    
@@ -87,16 +90,19 @@ def mapping_inputs():
     if d['position'] in [1,2,3]:
         if row1[d['position']-1] == ' ':
             row1[d['position']-1] = d['value']
+            print('\n')
             display()
             
         
     elif d['position'] in [4,5,6]:
         if row2[d['position']-4] == ' ':
             row2[d['position']-4] = d['value']
+            print('\n')
             display()
     elif d['position'] in [7,8,9]:
         if row3[d['position']-7] == ' ':
             row3[d['position']-7] = d['value']
+            print('\n')
             display()
     else:
         asking_input()
@@ -145,7 +151,7 @@ def win():
     elif (' ' not in row1) and (' ' not in row2) and (' ' not in row3):
         
         print('\n')
-        print('Sorry its a Tie between you two')
+        print("Great!!! it's a tie")
         print("\n")
         print("Lets Play again! ")
         print("\n")
@@ -156,6 +162,5 @@ def win():
         resets()
         asking_input()
         
-
 
 
