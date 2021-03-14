@@ -1,4 +1,5 @@
 from random import shuffle
+from IPython.display import clear_output   ## this will only work in jupyter notebook
 
 #row1 = [' ', ' ', ' ']
 #row2 = [' ', ' ', ' ']
@@ -64,6 +65,7 @@ def whowill():
 #############################################################################################################################
 
 def start_play():
+
     d['start'] = 0
     
     while d['start'] not in ['Y', 'y','N', 'n' ]:
@@ -135,6 +137,7 @@ def reset_display():
 ####################################### Below one maps input in the TicTacToe matrix #####################################    
 
 def mapping_inputs():
+    clear_output()
 
     if d['position'] in [1,2,3]:
         if row1[d['position']-1] == ' ':
@@ -168,7 +171,6 @@ def win():
         print("\n")
         print("Lets Play again! ")
         print("\n")
-        #resets()
         start_play()
         
     elif row1 == ['O','O','O'] or row2 == ['O','O','O'] or row3 == ['O','O','O']:
@@ -177,34 +179,29 @@ def win():
         print("\n")
         print("Lets Play again! ")
         print("\n")
-        #resets()
         start_play()
     
-    elif (row1[0] == 'O' and row2[0] == 'O' and row3[0] == 'O') or (row1[1] == 'O' and row2[1] == 'O' and row3[1] == 'O') or (row1[2] == 'O' and row2[2] == 'O' and row3[2] == 'O'):
+    elif (row1[0] == row2[0] == row3[0] == 'O') or (row1[1] == row2[1] == row3[1] == 'O') or (row1[2] == row2[2] == row3[2] == 'O') or (row1[0] == row2[1] == row3[2] == 'O') or (row1[2] == row2[1] == row3[0] == 'O'):
         print('\n')
         print("Congratulations!!!! O is the Winner")
         print("\n")
         print("Lets Play again! ")
         print("\n")
-        #resets()
         start_play()
     
-    elif (row1[0] == 'X' and row2[0] == 'X' and row3[0] == 'X') or (row1[1] == 'X' and row2[1] == 'X' and row3[1] == 'X') or (row1[2] == 'X' and row2[2] == 'X' and row3[2] == 'X'):
+    elif (row1[0] == row2[0] == row3[0] == 'X') or (row1[1] == row2[1] == row3[1] == 'X') or (row1[2] == row2[2] == row3[2] == 'X') or (row1[0] == row2[1] == row3[2] == 'X') or (row1[2] == row2[1] == row3[0] == 'X'):
         print('\n')
         print("Congratulations!!!! X is the Winner")
         print("\n")
         print("Lets Play again! ")
         print("\n")
-        #resets()
         start_play()
     elif (' ' not in row1) and (' ' not in row2) and (' ' not in row3):
-        
         print('\n')
         print("Great!!! it's a tie")
         print("\n")
         print("Lets Play again! ")
         print("\n")
-        #resets()
         start_play()
         
     else:
